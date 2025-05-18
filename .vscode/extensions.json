@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "fill-labs.dependi",
+    "grapecity.gc-excelviewer",
+    "humao.rest-client",
+    "mechatroner.rainbow-csv",
+    "ms-python.debugpy",
+    "ms-python.vscode-pylance",
+    "tamasfe.even-better-toml"
+  ]
+}

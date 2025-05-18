@@ -1,0 +1,12 @@
+Flask
+Flask-SQLAlchemy
+python-dotenv
+pytest
+gunicorn
+flasgger
+fastapi
+pydantic
+uvicorn
+pyodbc
+python-multipart
+types-pyodbc
