@@ -11,6 +11,9 @@ from ...src.v1.profiles.schema.output.profiles import GetProfileListOut
 
 
 class ProfileDB(Database):
+    def __init__(self):
+        super().__init__()
+
     def update_profile(self, profile: BaseProfile):
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:

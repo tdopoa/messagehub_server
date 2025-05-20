@@ -11,6 +11,9 @@ from ...src.v1.contacts.schema.output.contacts import GetContactListOut
 
 
 class ContactDB(Database):
+    def __init__(self):
+        super().__init__()
+
     def update_contact(self, contact: BaseContact):
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
