@@ -2,7 +2,7 @@ import json
 from typing import List
 from uuid import UUID
 
-import pyodbc  # type: ignore
+import pyodbc
 
 from ...src.v1.contacts.schema.input.contacts import BaseContact
 from ...src.v1.contacts.schema.output.contacts import GetContactListOut
