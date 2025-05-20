@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from v1.whatsapp_chatbots_questions.resource import whatsapp_chatbot_question
+from .resource import whatsapp_chatbot_question
 
 api_router = APIRouter()
 
