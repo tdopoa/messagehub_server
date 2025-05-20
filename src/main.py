@@ -42,7 +42,9 @@ def create_app():
         prefix="",
         tags=["WhatsApp Chatbots"],
     )
-    return app
 
-    return app
+    @app.get("/")
+    def index():
+        return {"Hello": "World"}
+
     return app
