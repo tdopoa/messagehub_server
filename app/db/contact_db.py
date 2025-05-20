@@ -2,11 +2,11 @@ import json
 from typing import List
 from uuid import UUID
 
-import pyodbc
+import pyodbc  # type: ignore
 
-from app.db.db import Database
-from v1.contacts.schema.input.contacts import BaseContact
-from v1.contacts.schema.output.contacts import GetContactListOut
+from ...src.v1.contacts.schema.input.contacts import BaseContact
+from ...src.v1.contacts.schema.output.contacts import GetContactListOut
+from .db import Database
 
 
 class ContactDB(Database):
