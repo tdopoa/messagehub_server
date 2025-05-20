@@ -1,20 +1,20 @@
-# Use the official image as a parent image
+# Use Python 3.9 as base image
 FROM python:3.11-slim
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt .
 
-# Install any needed packages specified in requirements.txt
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
+# Copy the rest of the application
+COPY . .
 
-# Define environment variable
-ENV FLASK_APP wsgi.py
+# Expose the port the app runs on
+EXPOSE 8000
 
-# Run app.py when the container launches
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
+# Command to run the application
+CMD ["uvicorn", "src.main:create_app", "--host", "0.0.0.0", "--port", "8000"]
