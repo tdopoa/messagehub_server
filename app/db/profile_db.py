@@ -1,20 +1,23 @@
 import json
-from typing import List
+from typing import TYPE_CHECKING, List
 from uuid import UUID
 
 import pyodbc
 
 from app.db.db import Database
 
-from ...src.v1.profiles.schema.input.profiles import BaseProfile
-from ...src.v1.profiles.schema.output.profiles import GetProfileListOut
+if TYPE_CHECKING:
+    from src.v1.profiles.schema.input.profiles import BaseProfile
+    from src.v1.profiles.schema.output.profiles import GetProfileListOut
 
 
 class ProfileDB(Database):
     def __init__(self):
         super().__init__()
 
-    def update_profile(self, profile: BaseProfile):
+    def update_profile(self, profile: "BaseProfile"):
+        from src.v1.profiles.schema.input.profiles import BaseProfile
+
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 cursor = cnxn.cursor()
@@ -46,7 +49,9 @@ class ProfileDB(Database):
             print(f"Erro ao alterar perfil: {sqlstate}")
             print(ex)
 
-    def insert_profile(self, profile: BaseProfile):
+    def insert_profile(self, profile: "BaseProfile"):
+        from src.v1.profiles.schema.input.profiles import BaseProfile
+
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 cursor = cnxn.cursor()
@@ -73,7 +78,9 @@ class ProfileDB(Database):
             print(f"Erro ao inserir perfil: {sqlstate}")
             print(ex)
 
-    def select_profile(self, id: UUID = None) -> List[BaseProfile]:
+    def select_profile(self, id: UUID = None) -> List["BaseProfile"]:
+        from src.v1.profiles.schema.input.profiles import BaseProfile
+
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = """
@@ -106,7 +113,9 @@ class ProfileDB(Database):
             print(f"Erro ao selecionar perfil: {sqlstate}")
             print(ex)
 
-    def list_profiles(self) -> List[GetProfileListOut]:
+    def list_profiles(self) -> List["GetProfileListOut"]:
+        from src.v1.profiles.schema.output.profiles import GetProfileListOut
+
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = """

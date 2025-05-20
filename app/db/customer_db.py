@@ -1,14 +1,15 @@
 import json
 import os
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 from uuid import UUID
 
 import pyodbc
 
 from app.db.db import Database
 
-from ...src.v1.customers.schema.input.customers import BaseCustomer
-from ...src.v1.customers.schema.output.customers import GetCustomerListOut
+if TYPE_CHECKING:
+    from src.v1.customers.schema.input.customers import BaseCustomer
+    from src.v1.customers.schema.output.customers import GetCustomerListOut
 
 
 class CustomerDB(Database):
@@ -154,7 +155,9 @@ class CustomerDB(Database):
                 for row in cursor.fetchall()
             ]
 
-    def select_customer(self, tenant_id: str) -> List[BaseCustomer]:
+    def select_customer(self, tenant_id: str) -> List["BaseCustomer"]:
+        from src.v1.customers.schema.input.customers import BaseCustomer
+
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = """
@@ -204,7 +207,9 @@ class CustomerDB(Database):
             print(f"Erro ao selecionar cliente: {ex}")
             print(ex)
 
-    def list_customer(self) -> List[GetCustomerListOut]:
+    def list_customer(self) -> List["GetCustomerListOut"]:
+        from src.v1.customers.schema.output.customers import GetCustomerListOut
+
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = "select [dbo].[FN_API_V1_Customer_List] ()"
