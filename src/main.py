@@ -1,5 +1,6 @@
 from typing import Union
 
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -10,6 +11,8 @@ from v1.whatsapp_chatbots.resource import whatsapp_chatbot
 from v1.whatsapp_chatbots_questions.resource import whatsapp_chatbot_question
 
 app = FastAPI()
+
+load_dotenv()
 
 
 def create_app():
