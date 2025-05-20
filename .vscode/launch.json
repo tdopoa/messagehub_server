@@ -10,10 +10,13 @@
             "request": "launch",
             "module": "uvicorn",
             "args": [
+                "--factory",
                 "src.main:create_app",
-                "--reload",
                 "--env-file",
-                "${workspaceFolder}/.env"
+                ".env",
+                "--reload",
+                "--reload-dir",
+                "${workspaceFolder}",
             ],
             "jinja": false,
             "justMyCode": false,
