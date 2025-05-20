@@ -5,8 +5,9 @@ from uuid import UUID
 import pyodbc
 
 from app.db.db import Database
-from v1.profiles.schema.input.profiles import BaseProfile
-from v1.profiles.schema.output.profiles import GetProfileListOut
+
+from ...src.v1.profiles.schema.input.profiles import BaseProfile
+from ...src.v1.profiles.schema.output.profiles import GetProfileListOut
 
 
 class ProfileDB(Database):

@@ -6,8 +6,9 @@ from uuid import UUID
 import pyodbc
 
 from app.db.db import Database
-from v1.customers.schema.input.customers import BaseCustomer
-from v1.customers.schema.output.customers import GetCustomerListOut
+
+from ...src.v1.customers.schema.input.customers import BaseCustomer
+from ...src.v1.customers.schema.output.customers import GetCustomerListOut
 
 
 class CustomerDB(Database):
