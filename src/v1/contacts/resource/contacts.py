@@ -4,8 +4,8 @@ from uuid import UUID
 from fastapi import APIRouter
 
 from app.db.contact_db import ContactDB
-from v1.contacts.schema.input.contacts import PostContactIn
-from v1.contacts.schema.output.contacts import GetContactListOut
+from v1.contacts.schema.contacts_in import PostContactIn
+from v1.contacts.schema.contacts_out import GetContactListOut
 
 router = APIRouter(prefix="")
 

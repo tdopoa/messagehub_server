@@ -1,15 +1,11 @@
 import json
-import os
-from typing import TYPE_CHECKING, Any, Dict, List, Optional
-from uuid import UUID
+from typing import Any, Dict, List, Optional
 
 import pyodbc
 
 from app.db.db import Database
-
-if TYPE_CHECKING:
-    from src.v1.customers.schema.input.customers import BaseCustomer
-    from src.v1.customers.schema.output.customers import GetCustomerListOut
+from src.v1.customers.schema.input.customers import BaseCustomer
+from src.v1.customers.schema.output.customers import GetCustomerListOut
 
 
 class CustomerDB(Database):

@@ -4,15 +4,15 @@ from uuid import UUID
 import pyodbc
 
 from app.db.db import Database
-from src.v1.contacts.schema.input.contacts import BaseContact
-from src.v1.contacts.schema.output.contacts import GetContactListOut
+from src.v1.contacts.schema.base_contacts import BaseContact
+from v1.contacts.schema.contacts_out import GetContactListOut
 
 
 class ContactDB(Database):
     def __init__(self):
         super().__init__()
 
-    def update_contact(self, contact: "BaseContact"):
+    def update_contact(self, contact: BaseContact):
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 cursor = cnxn.cursor()
@@ -179,4 +179,6 @@ class ContactDB(Database):
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             print(f"Erro ao excluir contato: {sqlstate}")
+            print(ex)
+            print(ex)
             print(ex)
