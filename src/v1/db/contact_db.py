@@ -3,8 +3,9 @@ from uuid import UUID
 
 import pyodbc
 
-from app.db.db import Database
 from v1.contacts.resource.base_contacts import BaseContact
+
+from .db import Database
 
 
 class ContactDB(Database):
@@ -178,6 +179,7 @@ class ContactDB(Database):
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             print(f"Erro ao excluir contato: {sqlstate}")
+            print(ex)
             print(ex)
             print(ex)
             print(ex)

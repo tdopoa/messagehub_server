@@ -3,9 +3,10 @@ from typing import Any, Dict, List, Optional
 
 import pyodbc
 
-from app.db.db import Database
 from v1.customers.resource.customers_in import BaseCustomer
 from v1.customers.resource.customers_out import GetCustomerListOut
+
+from .db import Database
 
 
 class CustomerDB(Database):
@@ -204,8 +205,6 @@ class CustomerDB(Database):
             print(ex)
 
     def list_customer(self) -> List["GetCustomerListOut"]:
-        from src.v1.customers.schema.output.customers import GetCustomerListOut
-
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = "select [dbo].[FN_API_V1_Customer_List] ()"
@@ -219,4 +218,5 @@ class CustomerDB(Database):
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             print(f"Erro ao selecionar cliente: {sqlstate}")
+            print(ex)
             print(ex)

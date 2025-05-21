@@ -3,9 +3,10 @@ from uuid import UUID
 
 import pyodbc
 
-from app.db.db import Database
 from src.v1.profiles.resource.profiles_in import BaseProfile
 from src.v1.profiles.resource.profiles_out import GetProfileListOut
+
+from .db import Database
 
 
 class ProfileDB(Database):
@@ -148,4 +149,5 @@ class ProfileDB(Database):
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             print(f"Erro ao excluir perfil: {sqlstate}")
+            print(ex)
             print(ex)

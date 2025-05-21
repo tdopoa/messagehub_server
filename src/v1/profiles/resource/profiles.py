@@ -3,7 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter
 
-from app.db.profile_db import ProfileDB
+from v1.db.profile_db import ProfileDB
 
 from .profiles_in import PostProfileIn
 from .profiles_out import GetProfileListOut

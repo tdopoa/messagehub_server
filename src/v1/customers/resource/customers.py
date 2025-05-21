@@ -3,7 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter
 
-from app.db.customer_db import CustomerDB
+from v1.db.customer_db import CustomerDB
 
 from .customers_in import PostCustomerIn
 from .customers_out import GetCustomerListOut

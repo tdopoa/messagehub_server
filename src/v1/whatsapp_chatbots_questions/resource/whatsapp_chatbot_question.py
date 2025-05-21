@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from fastapi import APIRouter
 
-from app.db.whatsapp_chatbots_db import WhatsAppChatBots
+from v1.db.whatsapp_chatbots_db import WhatsAppChatBots
 from v1.whatsapp_chatbots.resource.whatsapp_chatbot_question_in import (
     PostWhatsAppChatBotQuestionIn,
 )

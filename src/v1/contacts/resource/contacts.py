@@ -3,7 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter
 
-from app.db.contact_db import ContactDB
+from v1.db.contact_db import ContactDB
 
 from .contacts_in import PostContactIn
 from .contacts_out import GetContactListOut
