@@ -2,14 +2,10 @@ from datetime import datetime
 from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
 
 
 class BaseProfile(BaseModel):
-    model_config = ConfigDict(
-        populate_by_name=True, alias_generator=lambda x: x.replace("_", "")
-    )
-
     tenant_id: Optional[str] = Field(
         alias="TenantId",
         title="ID do Tenant",
