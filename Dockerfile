@@ -1,6 +1,10 @@
 # Use Python 3.11 as base image with security updates
 FROM python:3.11-slim-bullseye
 
+# Upgrade pip
+RUN pip install pip wheel setuptools --upgrade
+
+
 # Set working directory
 WORKDIR /app
 
@@ -9,7 +13,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY src/ /app/src/
-COPY .env /app/.env
+COPY .venv /app/.venv
 
 COPY entrypoint.sh /app/entrypoint.sh
 
