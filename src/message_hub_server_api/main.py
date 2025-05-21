@@ -2,12 +2,12 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from message_hub_server_api.v1.contacts.resource import contacts
-from message_hub_server_api.v1.customers.resource import customers
-from message_hub_server_api.v1.profiles.resource import profiles
-from message_hub_server_api.v1.whatsapp_chatbots.resource import whatsapp_chatbot
-from message_hub_server_api.v1.whatsapp_chatbots_questions.resource import (
-    whatsapp_chatbot_question,
+from message_hub_server_api.v1 import (
+    contacts,
+    customers,
+    profiles,
+    whatsapp_chatbots,
+    whatsapp_chatbots_questions,
 )
 
 app = FastAPI()
@@ -29,16 +29,16 @@ def create_app():
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    app.include_router(contacts.router, prefix="/contacts", tags=["Contacts"])
-    app.include_router(profiles.router, prefix="/profiles", tags=["Profiles"])
-    app.include_router(customers.router, prefix="/customers", tags=["Customers"])
+    app.include_router(contacts.api_router, prefix="/contacts", tags=["Contacts"])
+    app.include_router(profiles.api_router, prefix="/profiles", tags=["Profiles"])
+    app.include_router(customers.api_router, prefix="/customers", tags=["Customers"])
     app.include_router(
-        whatsapp_chatbot_question.router,
+        whatsapp_chatbots_questions.api_router,
         prefix="",
         tags=["WhatsApp Chatbots"],
     )
     app.include_router(
-        whatsapp_chatbot.router,
+        whatsapp_chatbots.api_router,
         prefix="",
         tags=["WhatsApp Chatbots"],
     )
