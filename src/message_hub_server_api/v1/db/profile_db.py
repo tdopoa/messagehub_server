@@ -121,14 +121,14 @@ class ProfileDB(Database):
                     profiles.append(
                         GetProfileListOut(
                             id=row[0],
-                            first_name=row[1],
-                            last_name=row[2],
+                            firstName=row[1],
+                            lastName=row[2],
                             email=row[3],
                             phone=row[4],
                             password=row[5],
-                            created_at=row[6],
-                            updated_at=row[7],
-                            tenant_id=row[8],
+                            createdAt=row[6],
+                            updatedAt=row[7],
+                            tenantId=row[8],
                         )
                     )
                 return profiles
