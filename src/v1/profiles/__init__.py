@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from v1.profiles.resource import profiles
+from src.v1.profiles.resource import profiles
 
 api_router = APIRouter()
 
