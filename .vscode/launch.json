@@ -9,6 +9,7 @@
             "type": "debugpy",
             "request": "launch",
             "module": "uvicorn",
+            "postDebugTask": "func: unlock port",
             "args": [
                 "--factory",
                 "message_hub_server_api.main:create_app",

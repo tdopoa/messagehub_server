@@ -7,12 +7,18 @@ WORKDIR /app
 # Update system packages and install security updates
 RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 
+ADD . /app
+
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Sync the project
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen
+    
 # Copy the rest of the application
 COPY . .
 
