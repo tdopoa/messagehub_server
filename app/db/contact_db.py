@@ -4,7 +4,7 @@ from uuid import UUID
 import pyodbc
 
 from app.db.db import Database
-from src.v1.contacts.schema.base_contacts import BaseContact
+from v1.contacts.resource.base_contacts import BaseContact
 
 
 class ContactDB(Database):

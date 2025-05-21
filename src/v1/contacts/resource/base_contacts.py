@@ -14,16 +14,16 @@ class BaseContact(BaseModel):
         description="Identificador único do contato",
         alias="id",
     )
-    first_name: str = Field(
-        ...,
+    first_name: Optional[str] = Field(
+        default=None,
         title="Nome",
         description="Nome do contato",
         min_length=1,
         max_length=50,
         alias="firstName",
     )
-    last_name: str = Field(
-        ...,
+    last_name: Optional[str] = Field(
+        default=None,
         title="Sobrenome",
         description="Sobrenome do contato",
         min_length=1,

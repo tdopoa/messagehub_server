@@ -4,8 +4,9 @@ from uuid import UUID
 from fastapi import APIRouter
 
 from app.db.contact_db import ContactDB
-from v1.contacts.schema.contacts_in import PostContactIn
-from v1.contacts.schema.contacts_out import GetContactListOut
+
+from .contacts_in import PostContactIn
+from .contacts_out import GetContactListOut
 
 router = APIRouter(prefix="")
 
@@ -79,4 +80,5 @@ async def delete_contact(id: UUID):
     Remove um contato pelo ID.
     """
     ContactDB().delete_contact(id)
+    return {"message": f"Contato com ID {id} removido com sucesso."}
     return {"message": f"Contato com ID {id} removido com sucesso."}

@@ -1,7 +1,7 @@
 from typing import Optional
 from uuid import UUID
 
-from src.v1.contacts.schema.base_contacts import BaseContact
+from .base_contacts import BaseContact
 
 
 class PostContactIn(BaseContact):
