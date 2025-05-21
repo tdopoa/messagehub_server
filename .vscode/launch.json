@@ -11,7 +11,7 @@
             "module": "uvicorn",
             "args": [
                 "--factory",
-                "src.message_hub_server_api.main:create_app",
+                "message_hub_server_api.main:create_app",
                 "--env-file",
                 ".env",
                 "--reload",
@@ -21,7 +21,7 @@
             "jinja": false,
             "justMyCode": false,
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/src",
+                "PYTHONPATH": "${workspaceFolder}/app",
                 "PYTHONUNBUFFERED": "1"
             },
         }

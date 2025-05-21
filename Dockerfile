@@ -1,8 +1,11 @@
-# Use Python 3.9 as base image
-FROM python:3.11-slim
+# Use Python 3.11 as base image with security updates
+FROM python:3.11-slim-bullseye
 
 # Set working directory
-WORKDIR /src
+WORKDIR /app
+
+# Update system packages and install security updates
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
