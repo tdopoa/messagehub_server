@@ -1,14 +1,11 @@
-import json
-from typing import TYPE_CHECKING, List
+from typing import List
 from uuid import UUID
 
 import pyodbc
 
 from app.db.db import Database
-
-if TYPE_CHECKING:
-    from src.v1.contacts.schema.input.contacts import BaseContact
-    from src.v1.contacts.schema.output.contacts import GetContactListOut
+from src.v1.contacts.schema.input.contacts import BaseContact
+from src.v1.contacts.schema.output.contacts import GetContactListOut
 
 
 class ContactDB(Database):
@@ -59,7 +56,7 @@ class ContactDB(Database):
             print(f"Erro ao alterar contato: {sqlstate}")
             print(ex)
 
-    def insert_contact(self, contact: "BaseContact"):
+    def insert_contact(self, contact: BaseContact):
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 cursor = cnxn.cursor()
@@ -93,7 +90,7 @@ class ContactDB(Database):
             print(f"Erro ao inserir contato: {sqlstate}")
             print(ex)
 
-    def select_contact(self, id: UUID = None) -> List["BaseContact"]:
+    def select_contact(self, id: UUID = None) -> List[BaseContact]:
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = """
@@ -132,7 +129,7 @@ class ContactDB(Database):
             print(f"Erro ao selecionar contato: {sqlstate}")
             print(ex)
 
-    def list_contacts(self) -> List["GetContactListOut"]:
+    def list_contacts(self) -> List[GetContactListOut]:
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = """
