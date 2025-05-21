@@ -12,7 +12,7 @@
             "postDebugTask": "func: unlock port",
             "args": [
                 "--factory",
-                "message_hub_server_api.main:create_app",
+                "src.main:create_app",
                 "--env-file",
                 ".env",
                 "--reload",

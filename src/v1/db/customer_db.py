@@ -3,10 +3,8 @@ from typing import Any, Dict, List, Optional
 
 import pyodbc
 
-from message_hub_server_api.v1.customers.resource.customers_in import BaseCustomer
-from message_hub_server_api.v1.customers.resource.customers_out import (
-    GetCustomerListOut,
-)
+from src.v1.customers.resource.customers_in import BaseCustomer
+from src.v1.customers.resource.customers_out import GetCustomerListOut
 
 from .db import Database
 

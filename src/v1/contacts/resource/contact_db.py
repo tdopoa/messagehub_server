@@ -1,10 +1,10 @@
-from typing import List
+from typing import List, Optional
 from uuid import UUID
 
 import pyodbc
 
-from ..contacts.resource.base_contacts import BaseContact
-from .db import Database
+from ...db.db import Database
+from .base_contacts import BaseContact
 
 
 class ContactDB(Database):
@@ -89,7 +89,7 @@ class ContactDB(Database):
             print(f"Erro ao inserir contato: {sqlstate}")
             print(ex)
 
-    def select_contact(self, id: UUID = None) -> List[BaseContact]:
+    def select_contact(self, id: Optional[UUID] = None) -> List[BaseContact]:
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = """
@@ -107,8 +107,8 @@ class ContactDB(Database):
                     return [
                         BaseContact(
                             id=data[0],
-                            first_name=data[1],
-                            last_name=data[2],
+                            firstName=data[1],
+                            lastName=data[2],
                             organization=data[3],
                             mobile=data[4],
                             email=data[5],
@@ -118,8 +118,8 @@ class ContactDB(Database):
                             custom3=data[9],
                             custom4=data[10],
                             address=data[11],
-                            created_at=data[12],
-                            updated_at=data[13],
+                            createdAt=data[12],
+                            updatedAt=data[13],
                         )
                     ]
                 return []
@@ -127,6 +127,7 @@ class ContactDB(Database):
             sqlstate = ex.args[0]
             print(f"Erro ao selecionar contato: {sqlstate}")
             print(ex)
+            return []
 
     def list_contacts(self) -> List[BaseContact]:
         try:
@@ -146,8 +147,8 @@ class ContactDB(Database):
                     contacts.append(
                         BaseContact(
                             id=row[0],
-                            first_name=row[1],
-                            last_name=row[2],
+                            firstName=row[1],
+                            lastName=row[2],
                             organization=row[3],
                             mobile=row[4],
                             email=row[5],
@@ -157,8 +158,8 @@ class ContactDB(Database):
                             custom3=row[9],
                             custom4=row[10],
                             address=row[11],
-                            created_at=row[12],
-                            updated_at=row[13],
+                            createdAt=row[12],
+                            updatedAt=row[13],
                         )
                     )
                 return contacts
@@ -166,6 +167,7 @@ class ContactDB(Database):
             sqlstate = ex.args[0]
             print(f"Erro ao listar contatos: {sqlstate}")
             print(ex)
+            return []
 
     def delete_contact(self, id: UUID):
         try:
@@ -178,7 +180,4 @@ class ContactDB(Database):
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             print(f"Erro ao excluir contato: {sqlstate}")
-            print(ex)
-            print(ex)
-            print(ex)
             print(ex)

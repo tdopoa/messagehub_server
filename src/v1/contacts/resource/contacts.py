@@ -3,8 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter
 
-from message_hub_server_api.v1.db.contact_db import ContactDB
-
+from .contact_db import ContactDB
 from .contacts_in import PostContactIn
 from .contacts_out import GetContactListOut
 
@@ -16,8 +15,8 @@ async def get_contacts_list() -> List[GetContactListOut]:
     """
     Obtém a lista de contatos.
     """
-    res: List[GetContactListOut] = ContactDB().list_contacts()
-    return res
+    contacts = ContactDB().list_contacts()
+    return [GetContactListOut(**contact.dict()) for contact in contacts]
 
 
 @router.get("/{id}", response_model=List[GetContactListOut])
@@ -35,8 +34,8 @@ async def post_contact(body: PostContactIn):
     Cria um novo contato.
     """
     contact_data = PostContactIn(
-        first_name=body.first_name,
-        last_name=body.last_name,
+        firstName=body.first_name,
+        lastName=body.last_name,
         organization=body.organization,
         mobile=body.mobile,
         email=body.email,
@@ -58,8 +57,8 @@ async def put_contact(body: PostContactIn) -> GetContactListOut:
     """
     contact_data = PostContactIn(
         id=body.id,
-        first_name=body.first_name,
-        last_name=body.last_name,
+        firstName=body.first_name,
+        lastName=body.last_name,
         organization=body.organization,
         mobile=body.mobile,
         email=body.email,

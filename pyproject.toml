@@ -6,10 +6,6 @@ readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = 'Tiago Schulz', email = 'contato@gridwise.com.br' }]
 
-[project.scripts]
-message_hub_server_api = "src.message_hub_server_api:main"
-
-
 [tool.mypy]
 python_version = "3.11"
 mypy_path = "src"

@@ -3,7 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter
 
-from message_hub_server_api.v1.db.customer_db import CustomerDB
+from src.v1.db.customer_db import CustomerDB
 
 from .customers_in import PostCustomerIn
 from .customers_out import GetCustomerListOut

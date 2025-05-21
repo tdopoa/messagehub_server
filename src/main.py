@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from message_hub_server_api.v1 import (
+from src.v1 import (
     contacts,
     customers,
     profiles,

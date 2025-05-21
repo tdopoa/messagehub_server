@@ -2,11 +2,11 @@ from typing import List, Optional
 
 from fastapi import APIRouter
 
-from message_hub_server_api.v1.db.whatsapp_chatbots_db import WhatsAppChatBots
-from message_hub_server_api.v1.whatsapp_chatbots.resource.whatsapp_chatbot_question_in import (
+from src.v1.db.whatsapp_chatbots_db import WhatsAppChatBots
+from src.v1.whatsapp_chatbots.resource.whatsapp_chatbot_question_in import (
     PostWhatsAppChatBotQuestionIn,
 )
-from message_hub_server_api.v1.whatsapp_chatbots.resource.whatsapp_chatbot_question_out import (
+from src.v1.whatsapp_chatbots.resource.whatsapp_chatbot_question_out import (
     GetWhatsAppChatBotQuestionOut,
 )
 
