@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from src.v1.customers.resource import customers
+from .resource import customers
 
 api_router = APIRouter()
 

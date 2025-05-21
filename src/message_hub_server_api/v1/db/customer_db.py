@@ -3,8 +3,10 @@ from typing import Any, Dict, List, Optional
 
 import pyodbc
 
-from v1.customers.resource.customers_in import BaseCustomer
-from v1.customers.resource.customers_out import GetCustomerListOut
+from message_hub_server_api.v1.customers.resource.customers_in import BaseCustomer
+from message_hub_server_api.v1.customers.resource.customers_out import (
+    GetCustomerListOut,
+)
 
 from .db import Database
 
@@ -218,5 +220,7 @@ class CustomerDB(Database):
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             print(f"Erro ao selecionar cliente: {sqlstate}")
+            print(ex)
+            print(ex)
             print(ex)
             print(ex)

@@ -1,14 +1,14 @@
-from typing import Union
-
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from v1.contacts.resource import contacts
-from v1.customers.resource import customers
-from v1.profiles.resource import profiles
-from v1.whatsapp_chatbots.resource import whatsapp_chatbot
-from v1.whatsapp_chatbots_questions.resource import whatsapp_chatbot_question
+from message_hub_server_api.v1.contacts.resource import contacts
+from message_hub_server_api.v1.customers.resource import customers
+from message_hub_server_api.v1.profiles.resource import profiles
+from message_hub_server_api.v1.whatsapp_chatbots.resource import whatsapp_chatbot
+from message_hub_server_api.v1.whatsapp_chatbots_questions.resource import (
+    whatsapp_chatbot_question,
+)
 
 app = FastAPI()
 

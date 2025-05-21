@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from src.v1.profiles.resource import profiles
+from message_hub_server_api.v1.profiles.resource import profiles
 
 api_router = APIRouter()
 

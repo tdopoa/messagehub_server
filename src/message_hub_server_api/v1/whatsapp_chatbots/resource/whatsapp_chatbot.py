@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from fastapi import APIRouter
 
-from v1.db.whatsapp_chatbots_db import WhatsAppChatBots
+from message_hub_server_api.v1.db.whatsapp_chatbots_db import WhatsAppChatBots
 
 from .whatsapp_chatbot_in import PostWhatsAppChatBotIn
 from .whatsapp_chatbot_out import GetWhatsAppChatBotOut

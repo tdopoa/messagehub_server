@@ -3,9 +3,8 @@ from uuid import UUID
 
 import pyodbc
 
-from src.v1.profiles.resource.profiles_in import BaseProfile
-from src.v1.profiles.resource.profiles_out import GetProfileListOut
-
+from ..profiles.resource.profiles_in import BaseProfile
+from ..profiles.resource.profiles_out import GetProfileListOut
 from .db import Database
 
 

@@ -1,6 +1,28 @@
+[project]
+name = "message_hub_server_api"
+version = "0.1.0"
+description = "Message Hub Server API for Message Hub, a package for building REST APIs with Python 3.11+."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = 'Tiago Schulz', email = 'contato@gridwise.com.br' }]
+
+[project.scripts]
+message_hub_server_api = "src.message_hub_server_api:main"
+
+
 [tool.mypy]
 python_version = "3.11"
 mypy_path = "src"
+
 [[tool.mypy.overrides]]
 module = "pyodbc.*"
-ignore_missing_imports = true 
+ignore_missing_imports = true
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+combine-as-imports = true
+
+[tool.taskipy.tasks]
+lint = "ruff check . && ruff check . --diff"
+format = "ruff check . --fix --select I && ruff format ."
+

@@ -3,7 +3,7 @@ from uuid import UUID
 
 import pyodbc
 
-from v1.contacts.resource.base_contacts import BaseContact
+from message_hub_server_api.v1.contacts.resource.base_contacts import BaseContact
 
 from .db import Database
 
