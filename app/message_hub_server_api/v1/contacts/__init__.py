@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from ..contacts.resource import contacts
+from .resource import contacts
 
 api_router = APIRouter()
 
