@@ -1,23 +1,15 @@
 # Use Python 3.11 as base image with security updates
 FROM python:3.11-slim-bullseye
 
+RUN mkdir -p /app
 # Set working directory
 WORKDIR /app
 
-# Update system packages and install security updates
-RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
-
-ADD . /app
-
-# Copy requirements first to leverage Docker cache
 COPY requirements.txt .
-
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Sync the project
-# Copy the rest of the application
-COPY . .
+COPY ./app /app
 
 # Expose the port the app runs on
 EXPOSE 8000
