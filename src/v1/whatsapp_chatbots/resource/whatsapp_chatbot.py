@@ -3,8 +3,9 @@ from typing import List, Optional
 from fastapi import APIRouter
 
 from app.db.whatsapp_chatbots_db import WhatsAppChatBots
-from v1.whatsapp_chatbots.schema.input.whatsapp_chatbot import PostWhatsAppChatBotIn
-from v1.whatsapp_chatbots.schema.output.whatsapp_chatbot import GetWhatsAppChatBotOut
+
+from .whatsapp_chatbot_in import PostWhatsAppChatBotIn
+from .whatsapp_chatbot_out import GetWhatsAppChatBotOut
 
 router = APIRouter(prefix="")
 
@@ -98,4 +99,7 @@ async def delete_chatbot(chatbot_id: str):
     Remove um chatbot pelo ID.
     """
     WhatsAppChatBots().delete_chatbot(chatbot_id)
+    return {"message": f"Chatbot com ID {chatbot_id} removido com sucesso."}
+    WhatsAppChatBots().delete_chatbot(chatbot_id)
+    return {"message": f"Chatbot com ID {chatbot_id} removido com sucesso."}
     return {"message": f"Chatbot com ID {chatbot_id} removido com sucesso."}

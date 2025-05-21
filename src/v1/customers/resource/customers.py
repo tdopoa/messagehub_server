@@ -4,8 +4,9 @@ from uuid import UUID
 from fastapi import APIRouter
 
 from app.db.customer_db import CustomerDB
-from v1.customers.schema.input.customers import PostCustomerIn
-from v1.customers.schema.output.customers import GetCustomerListOut
+
+from .customers_in import PostCustomerIn
+from .customers_out import GetCustomerListOut
 
 router = APIRouter(prefix="")
 
@@ -100,4 +101,5 @@ async def search_customers(
     Busca clientes por termo de pesquisa.
     """
     customers = CustomerDB().search_customers(tenant_id, search_term)
+    return [GetCustomerListOut(**customer) for customer in customers]
     return [GetCustomerListOut(**customer) for customer in customers]

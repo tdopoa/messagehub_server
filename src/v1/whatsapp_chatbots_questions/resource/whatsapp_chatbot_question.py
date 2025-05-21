@@ -3,10 +3,10 @@ from typing import List, Optional
 from fastapi import APIRouter
 
 from app.db.whatsapp_chatbots_db import WhatsAppChatBots
-from v1.whatsapp_chatbots.schema.input.whatsapp_chatbot_question import (
+from v1.whatsapp_chatbots.resource.whatsapp_chatbot_question_in import (
     PostWhatsAppChatBotQuestionIn,
 )
-from v1.whatsapp_chatbots.schema.output.whatsapp_chatbot_question import (
+from v1.whatsapp_chatbots.resource.whatsapp_chatbot_question_out import (
     GetWhatsAppChatBotQuestionOut,
 )
 

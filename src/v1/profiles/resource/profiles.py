@@ -4,8 +4,9 @@ from uuid import UUID
 from fastapi import APIRouter
 
 from app.db.profile_db import ProfileDB
-from v1.profiles.schema.input.profiles import PostProfileIn
-from v1.profiles.schema.output.profiles import GetProfileListOut
+
+from .profiles_in import PostProfileIn
+from .profiles_out import GetProfileListOut
 
 router = APIRouter(prefix="")
 
@@ -67,4 +68,5 @@ async def delete_profile(id: UUID):
     Remove um perfil pelo ID.
     """
     ProfileDB().delete_profile(id)
+    return {"message": f"Perfil com ID {id} removido com sucesso."}
     return {"message": f"Perfil com ID {id} removido com sucesso."}

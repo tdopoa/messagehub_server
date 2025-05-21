@@ -4,8 +4,8 @@ from typing import Any, Dict, List, Optional
 import pyodbc
 
 from app.db.db import Database
-from src.v1.customers.schema.input.customers import BaseCustomer
-from src.v1.customers.schema.output.customers import GetCustomerListOut
+from v1.customers.resource.customers_in import BaseCustomer
+from v1.customers.resource.customers_out import GetCustomerListOut
 
 
 class CustomerDB(Database):
@@ -152,7 +152,7 @@ class CustomerDB(Database):
             ]
 
     def select_customer(self, tenant_id: str) -> List["BaseCustomer"]:
-        from src.v1.customers.schema.input.customers import BaseCustomer
+        from v1.customers.resource.customers_in import BaseCustomer
 
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
