@@ -5,7 +5,6 @@ import pyodbc
 
 from app.db.db import Database
 from src.v1.contacts.schema.base_contacts import BaseContact
-from v1.contacts.schema.contacts_out import GetContactListOut
 
 
 class ContactDB(Database):
@@ -129,7 +128,7 @@ class ContactDB(Database):
             print(f"Erro ao selecionar contato: {sqlstate}")
             print(ex)
 
-    def list_contacts(self) -> List[GetContactListOut]:
+    def list_contacts(self) -> List[BaseContact]:
         try:
             with pyodbc.connect(self._build_connection_string()) as cnxn:
                 query = """
@@ -145,7 +144,7 @@ class ContactDB(Database):
                 contacts = []
                 for row in data:
                     contacts.append(
-                        GetContactListOut(
+                        BaseContact(
                             id=row[0],
                             first_name=row[1],
                             last_name=row[2],

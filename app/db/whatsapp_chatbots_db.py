@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Optional
 
 import pyodbc
 
-from .db import Database
+from app.db.db import Database
 
 
 class WhatsAppChatBots(Database):
