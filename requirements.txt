@@ -2,6 +2,6 @@ python-dotenv
 gunicorn
 fastapi
 pydantic
-uvicorn
+uvicorn==0.34.2
 pyodbc
 python-multipart
