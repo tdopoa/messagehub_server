@@ -17,8 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
-    
+    uvicorn sync --frozen
+
 # Copy the rest of the application
 COPY . .
 
